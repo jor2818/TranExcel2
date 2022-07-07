@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet" type=text/css>
+    <title>Input Data</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top mb-5">
+        <div class="container">
+          <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">TranExcel</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Analysis
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="tripgenMain">Trip Generation</a></li>
+                  <li><a class="dropdown-item" href="tripdisMain">Trip Distribution</a></li>
+                  <li><a class="dropdown-item" href="tripassMain">Trip Assignment</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="networkMain">Network Builder</a></li>
+                  <li><a class="dropdown-item" href="shortpathMain">Shortest Path</a></li>
+                  <li><a class="dropdown-item" href="meMain">Matrix Estimation</a></li>
+                  <li><a class="dropdown-item" href="throughMain">EE and IE/EI Estimator</a></li>
+                  <li><a class="dropdown-item" href="formatMain">Building Area Usage Formatting</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about">About</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-5 p-5">
+
+        <form action="tripGenBU" method="post" enctype="multipart/form-data">
+            <h3>Step 1 : Input Building Area Usage</h3>
+            <br>
+            <hr>
+            <div class="mb-3">
+                <label for="formFile" class="form-label h5">Building Area Usage File</label>
+                <input type="file" class="form-control" id="csvFile" name="csvFile" required>
+                <small id="csvFile" class="form-text text-muted">Choose the building area usage file (csv)</small>
+                <br>
+                <input class="btn btn-dark" type="submit" name="" value="UPLOAD" required>
+            </div>            
+            <hr>
+        </form>
+        <br>
+        <form action="tripgenTE" method="post">
+            <h3>Step 2: Choose the Analysis Options</h3>
+            <br>
+            <hr>
+            <br>
+            <div class="mb-3">
+              <h5>City Type</h5>
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="city_type" value=1 class="form-check-input" checked>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    All Country
+                  </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="city_type" value=2 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Metropolis
+                  </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="city_type" value=3 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Big City
+                  </label>
+              </div>
+                  
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="city_type" value=4 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Medium City
+                  </label>
+              </div>
+              
+              <div class="form-check-inline mb-1">
+                <input type="radio" name="city_type" value=5 class="form-check-input"> 
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Small City
+                </label>
+              </div>
+
+            </div>
+            <br>
+            <div class="mb-3">
+              <h5>Time and Unit of Travelling</h5>
+              <h6>All Day</h6>
+              <div class="form-check-inline mb-1">
+                <input type="radio" name="unit" value=2 class="form-check-input" checked> 
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Trips per day
+                </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                 <input type="radio" name="unit" value=1 class="form-check-input"> 
+                 <label class="form-check-label" for="flexRadioDefault2">
+                  Vehicles per day
+                </label>
+              </div>
+              
+              <div class="form-check-inline mb-1">
+                 <input type="radio" name="unit" value=3 class="form-check-input"> 
+                 <label class="form-check-label" for="flexRadioDefault2">
+                  PCU per day
+                </label>
+              </div>
+              
+              <h6>AM Peak</h6>
+              <div class="form-check-inline mb-1">
+                 <input type="radio" name="unit" value=5 class="form-check-input"> 
+                 <label class="form-check-label" for="flexRadioDefault2">
+                  Trips per hour
+                </label>
+              </div>
+              
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="unit" value=4 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Vehicles per hour
+                  </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="unit" value=6 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    PCU per hour
+                  </label>
+              </div>
+                            
+              <h6>PM Peak</h6>
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="unit" value=8 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Trips per hour
+                  </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="unit" value=7 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Vehicles per hour
+                  </label>
+
+              </div>
+              
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="unit" value=9 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    PCU per hour
+                  </label>
+              </div>
+              
+
+            </div>
+            <br>
+            <div class="mb-3">
+              <h5>Mode of Transport</h5>
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="mode" value=1 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    Car
+                  </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="mode" value=2 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    Bus
+                  </label>
+              </div>
+
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="mode" value=3 class="form-check-input"> 
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    Truck
+                  </label>
+              </div>
+              
+              <div class="form-check-inline mb-1">
+                  <input type="radio" name="mode" value=4 class="form-check-input" checked> 
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    Total
+                  </label>
+              </div>
+            </div>
+          <br>
+          <hr>                
+          <br>
+          <button class = "btn btn-dark" type="submit">TRIP END</button>
+
+        </form>
+
+    </div>
+
+
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+</html>

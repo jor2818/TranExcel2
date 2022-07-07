@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}"
+    rel="stylesheet" type=text/css> <link href="{{ url_for('static',
+    filename='css/styles.css') }}" rel="stylesheet" type=text/css> <link
+    href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}"
+    rel="stylesheet" type=text/css>
+    <title>About Page</title>
+  </head>
+  <body>
+    <div class="containerAbout">
+      <div class="item">
+        <h3 style="color: white">TRANEXCEL&trade;</h3>
+        <p style="color: white">
+          version : 2.1.0
+        </p>
+        <p style="color:white">
+          This product is licensed to : TOWN AND COUNTRY PLANNING ENGINEERING BUREAU, DEPARTMENT OF PUBLIC WORKS AND TOWN &amp; COUNTRY, THAILAND         
+        </p>
+        <p style="color: white;">
+          &copy;Copyright 2021 GISC Inc. All right reserved.
+        </p>
+        <hr>
+        <p style="color:white">
+            Warning : This application is protected by copyright law and international treaties. Unauthorized reproduction or Distribution
+            of this application, or any portion of it, may result in severe civil and criminal penalities, and will be prosecuted to the 
+            maximum extent possible under law.
+        </p>
+        <button class="btn btn-dark" onclick="window.location.href='home'">
+          OK
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

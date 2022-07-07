@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}"
+    rel="stylesheet" type=text/css> <link href="{{ url_for('static',
+    filename='css/styles.css') }}" rel="stylesheet" type=text/css> <link
+    href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}"
+    rel="stylesheet" type=text/css>
+    <title>Trip Generation and Modal Split Module</title>
+  </head>
+  <body>
+    <div class="containerTG">
+      <div class="item">
+        <h3 style="color: white">TRIP GENERATION MODULE</h3>
+        <p style="color: white">
+          The purpose of trip generation module is to estimate the number of
+          trips of each type that begin or end in each location, based on the
+          amount of activity in an analysis area.The estimated number of daily
+          trips will be in the flow unit that is used by the model (vehicle
+          trip, person trip).The output of trip generation is trip productions
+          and attractions by traffic analysis zone.
+        </p>
+        <a onclick="window.location.href='tripgenMED'" class="btn btn-dark"
+          >ENTER</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

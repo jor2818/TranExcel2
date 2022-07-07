@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet" type=text/css>
+    <title>Trip End</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top mb-5">
+        <div class="container">
+          <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">TranExcel</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Analysis
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="tripgenMain">Trip Generation</a></li>
+                  <li><a class="dropdown-item" href="tripdisMain">Trip Distribution</a></li>
+                  <li><a class="dropdown-item" href="tripassMain">Trip Assignment</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="networkMain">Network Builder</a></li>
+                  <li><a class="dropdown-item" href="shortpathMain">Shortest Path</a></li>
+                  <li><a class="dropdown-item" href="meMain">Matrix Estimation</a></li>
+                  <li><a class="dropdown-item" href="throughMain">EE and IE/EI Estimator</a></li>
+                  <li><a class="dropdown-item" href="formatMain">Building Area Usage Formatting</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about">About</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+
+    <header class="headerTG">
+        <div class="info">
+          <div class="info-content">
+              <h1>Trip End</h1>
+              <p>Trip ends is the total of trips entering and leaving a specific zone or site over a designed period of time.
+              </p>
+          </div>
+  
+        </div>
+    </header>
+
+    <section>
+      <div class="container-fluid mt-3">
+        <h3>Trip End</h3>
+          <hr>
+          <div class="table-responsive-sm">
+            <table class="table table-bordered">
+              {% for row in tripend %}
+                <tr> {% for cell in row %}
+                    <td> {{ cell }}</td>
+                    {% endfor %}
+                </tr>
+              {% endfor %}
+            </table>
+
+          </div>
+      
+      <br>
+        <form action="exportTE" method="post">
+          <button class = "btn btn-dark" type="submit">EXPORT TRIP END</button>
+          <br>
+        </form>
+
+
+      </div>
+      
+    </section>
+
+
+    <br>
+
+
+
+
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>   
+
+
+</body>
+</html>

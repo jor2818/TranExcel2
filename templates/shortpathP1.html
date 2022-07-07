@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet" type=text/css>
+    <title>Input Data</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top mb-5">
+        <div class="container">
+          <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">TranExcel</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Analysis
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="tripgenMain">Trip Generation</a></li>
+                  <li><a class="dropdown-item" href="tripdisMain">Trip Distribution</a></li>
+                  <li><a class="dropdown-item" href="tripassMain">Trip Assignment</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="networkMain">Network Builder</a></li>
+                  <li><a class="dropdown-item" href="shortpathMain">Shortest Path</a></li>
+                  <li><a class="dropdown-item" href="meMain">Matrix Estimation</a></li>
+                  <li><a class="dropdown-item" href="throughMain">EE and IE/EI Estimator</a></li>
+                  <li><a class="dropdown-item" href="formatMain">Building Area Usage Formatting</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about">About</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-5 p-5">
+        <h3>Step 1 : Input Transport Network Data</h3>
+        <br>
+        <hr>
+        <form action="shortpathND" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="formFile" class="form-label h5">Transport Node File</label>
+                <input type="file" class="form-control" id="csvNode" name="csvNode" required>
+                <small id="csvNode" class="form-text text-muted">Choose the node file (csv)</small>
+                <br>
+                <input class="btn btn-dark" type="submit" name="" value="UPLOAD" required>
+            </div>            
+        </form>
+        <hr>
+        <form action="shortpathLK" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="formFile" class="form-label h5">Transport Link File</label>
+                <input type="file" class="form-control" id="csvLink" name="csvLink" required>
+                <small id="csvLink" class="form-text text-muted">Choose the link file (csv)</small>
+                <br>
+                <input class="btn btn-dark" type="submit" name="" value="UPLOAD" required>
+            </div>
+        </form>
+        <hr>
+        <br>
+        <h3>Step 2 : Transport Network Setting</h3>
+        <br>
+        <hr>
+        <form action="shortpathTT" method='POST'>
+            <h3>Enter the number of TAZ</h3>
+            <br>
+            <div>
+                <b>The number of TAZ </b>
+                <input type="number" name="TAZ1" required>  
+            </div>
+            
+            <br>
+            <hr>    
+            <h3>Choose the coordination system</h3>
+            <br>
+            <div class="form-check mb-1">
+                <input type="radio" name="coor_sys1" value=1 class="form-check-input" checked> 
+                <label class="form-check-label" for="flexRadioDefault6">
+                  World System
+                </label>
+            </div>
+
+            <div class="form-check mb-1">
+                <input type="radio" name="coor_sys1" value=2 class="form-check-input"> 
+                <label class="form-check-label" for="flexRadioDefault6">
+                  XY System
+                </label>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+            <input class="btn btn-dark" type="submit" name="trip_network" value ="SHORTEST PATH"> 
+        </form>
+
+
+    </div>
+
+
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+</html>

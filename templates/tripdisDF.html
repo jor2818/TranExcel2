@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type=text/css>
+    <link href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet" type=text/css>
+    <title>Input Data Choices</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top mb-5">
+        <div class="container">
+          <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">TranExcel</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Analysis
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="tripgenMain">Trip Generation</a></li>
+                  <li><a class="dropdown-item" href="tripdisMain">Trip Distribution</a></li>
+                  <li><a class="dropdown-item" href="tripassMain">Trip Assignment</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="networkMain">Network Builder</a></li>
+                  <li><a class="dropdown-item" href="shortpathMain">Shortest Path</a></li>
+                  <li><a class="dropdown-item" href="meMain">Matrix Estimation</a></li>
+                  <li><a class="dropdown-item" href="throughMain">EE and IE/EI Estimator</a></li>
+                  <li><a class="dropdown-item" href="formatMain">Building Area Usage Formatting</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about">About</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-5 p-5">
+      <form action="tripdisTE" method="post" enctype="multipart/form-data">
+        <h3>Choice No.2 : Deterrence Function</h3>
+        <br>
+        <hr>
+        <div class="mb-3">
+            <label for="formFile" class="form-label h5">Trip End File</label>
+            <input type="file" class="form-control" id="csvTE" name="csvTE" required>
+            <small id="csvTE" class="form-text text-muted">Choose the trip end file (csv)</small>
+            <br>
+            <input class="btn btn-dark" type="submit" name="" value="UPLOAD" required>
+        </div>            
+        <hr>
+      </form>
+
+      <form action="tripdisTC" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="formFile" class="form-label h5">Travel Cost File</label>
+            <input type="file" class="form-control" id="csvTC" name="csvTC" required>
+            <small id="csvTC" class="form-text text-muted">Choose the travel cost file (csv)</small>
+            <br>
+            <input class="btn btn-dark" type="submit" name="" value="UPLOAD" required>
+        </div>            
+        <hr>
+      </form>
+      <br>
+      <form action="tripdisDFTT" method="POST">
+        <div class="mb-3">
+          <h3>Deterrence Function</h3>
+          <br>
+          <hr>
+          <br>
+
+          <div class="form-check mb-1">
+            <input type="radio" name="function" value="power" class="form-check-input" checked> 
+            <label class="form-check-label" for="flexRadioDefault5">
+              f(C<sub>ij</sub>)=&alpha;*C<sub>ij</sub><sup>-&beta;</sup>
+            </label>
+            <div class="container-fluid">
+              <div>
+                <b>&alpha;</b>
+                <input type="number" step=0.01 name="alpha" placeholder="1.00">
+              </div>
+              <div>
+                <b>&beta;</b>
+                <input type="number" step=0.01 name="beta" placeholder="2.00">
+              </div>
+                
+            </div>
+            
+          </div>
+          <br>
+          <div class="form-check mb-1">
+            <input type="radio" name="function" value="exponential" class="form-check-input"> 
+            <label class="form-check-label" for="flexRadioDefault5">
+              f(C<sub>ij</sub>)=&alpha;*exp(-&beta;C<sub>ij</sub>)
+            </label>
+            <div class="container-fluid">
+              <div class="form-outline">
+                <b>&alpha;</b>
+                <input type="number" step=0.01 name="alpha1" placeholder="1.00">
+              </div>
+              <div>
+                <b>&beta;</b>
+                <input type="number" step=0.01 name="beta1" placeholder="2.00">
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        
+        <br>
+        <hr>
+        <br>
+        <input class="btn btn-dark" type="submit" name="trip_table" value ="TRIP TABLE"> 
+      </form>
+
+    </div>
+
+
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+</html>
